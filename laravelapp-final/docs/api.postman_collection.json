@@ -1,0 +1,255 @@
+{
+    "info": {
+        "name": "Wisata Ticket API",
+        "description": "API documentation for Wisata Ticket application",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Tourist Attractions",
+            "item": [
+                {
+                    "name": "List Attractions",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/attractions",
+                        "description": "Get list of tourist attractions with optional filters"
+                    }
+                },
+                {
+                    "name": "Get Attraction Details",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/attractions/:id",
+                        "description": "Get detailed information about a specific tourist attraction"
+                    }
+                },
+                {
+                    "name": "Get Popular Attractions",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/attractions/popular",
+                        "description": "Get list of popular tourist attractions"
+                    }
+                },
+                {
+                    "name": "Get Categories",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/categories",
+                        "description": "Get list of tourist attraction categories"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Bookings",
+            "item": [
+                {
+                    "name": "List Bookings",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/bookings",
+                        "description": "Get list of bookings with optional filters",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Booking",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/api/bookings",
+                        "description": "Create a new booking",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"tourist_attraction_id\": 1,\n    \"visit_date\": \"2024-04-01\",\n    \"number_of_tickets\": 2\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Get Booking Details",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/bookings/:id",
+                        "description": "Get detailed information about a specific booking",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Booking",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/api/bookings/:id/cancel",
+                        "description": "Cancel a pending booking",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews",
+            "item": [
+                {
+                    "name": "List Reviews",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/reviews",
+                        "description": "Get list of reviews with optional filters",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Review",
+                    "request": {
+                        "method": "POST",
+                        "url": "{{base_url}}/api/reviews",
+                        "description": "Create a new review",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"tourist_attraction_id\": 1,\n    \"rating\": 5,\n    \"comment\": \"Great place to visit!\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Get Review Details",
+                    "request": {
+                        "method": "GET",
+                        "url": "{{base_url}}/api/reviews/:id",
+                        "description": "Get detailed information about a specific review",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Review",
+                    "request": {
+                        "method": "PUT",
+                        "url": "{{base_url}}/api/reviews/:id",
+                        "description": "Update an existing review",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"rating\": 4,\n    \"comment\": \"Updated review comment\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Review",
+                    "request": {
+                        "method": "DELETE",
+                        "url": "{{base_url}}/api/reviews/:id",
+                        "description": "Delete a review",
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{auth_token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000"
+        },
+        {
+            "key": "auth_token",
+            "value": "your_auth_token_here"
+        }
+    ]
+} 
